@@ -9,7 +9,7 @@ namespace NET.QuartzScheduler
 {
     public static class QuartzServiceExtentions
     {
-        public static IServiceCollection InstallQuartz(this IServiceCollection services,
+        public static IServiceCollection RegisterQuartzJDBCStores(this IServiceCollection services,
                string connectionString,
                QuartzDBTypeEnum dbType,
                string baseSchema,
@@ -19,7 +19,8 @@ namespace NET.QuartzScheduler
                string scheduleName = ""
                )
         {
-            var props = GetProperty(dbType, connectionString, baseSchema, quartPrefix, quartzDataSource, scheduleId, scheduleName);
+            var props = GetJDBCStoreProperty(dbType, connectionString, baseSchema, quartPrefix, quartzDataSource, scheduleId, scheduleName);
+
             if (string.IsNullOrEmpty(connectionString) == false)
             {
                 services.AddQuartz(p =>
@@ -31,12 +32,28 @@ namespace NET.QuartzScheduler
             services.AddScoped<IQuartzBaseService, QuartzBaseService>();
             return services;
         }
+        public static IServiceCollection RegisterQuartzRAMStores(this IServiceCollection services,
+               string quartPrefix = "",
+               string quartzDataSource = "",
+               string scheduleId = "",
+               string scheduleName = ""
+            )
+        {
+            var props = GetRAMStoreProperty(quartPrefix, quartzDataSource, scheduleId, scheduleName);
+            services.AddQuartz(p =>
+            {
+                props.Invoke(p);
+                p.UseTimeZoneConverter();
+            });
+            services.AddScoped<IQuartzBaseService, QuartzBaseService>();
+            return services;
+        }
         public static IServiceCollection AddQuartzServer(this IServiceCollection services)
         {
             services.AddQuartzServer(p => p.WaitForJobsToComplete = true);
             return services;
         }
-        private static Action<IServiceCollectionQuartzConfigurator> GetProperty(
+        private static Action<IServiceCollectionQuartzConfigurator> GetJDBCStoreProperty(
             QuartzDBTypeEnum dbType,
             string connectionString,
             string baseSchema,
@@ -47,7 +64,7 @@ namespace NET.QuartzScheduler
             )
         {
             var datasource = quartzDataSource?? QuartzConstant.DEFAULT_QUARTZ_DATA_SOURCE;
-            var frefix = string.IsNullOrEmpty(quartPrefix) ? QuartzConstant.DEFAULT_QUARTZ_FREFIX : quartPrefix;
+            var frefix = quartPrefix ?? QuartzConstant.DEFAULT_QUARTZ_FREFIX;
 
             var requiredParams = new List<string>();
             if (string.IsNullOrEmpty(connectionString))
@@ -96,6 +113,29 @@ namespace NET.QuartzScheduler
                 }
                 p.SetProperty($"quartz.dataSource.{datasource}.connectionString", connectionString);
 
+            };
+        }
+        private static Action<IServiceCollectionQuartzConfigurator> GetRAMStoreProperty(
+            string quartPrefix = "",
+            string quartzDataSource = "",
+            string scheduleId = "",
+            string scheduleName = ""
+            )
+        {
+            var datasource = quartzDataSource?? QuartzConstant.DEFAULT_QUARTZ_DATA_SOURCE;
+            var frefix = quartPrefix ?? QuartzConstant.DEFAULT_QUARTZ_FREFIX;
+            return p =>
+            {
+                if (string.IsNullOrEmpty(scheduleId) == false)
+                    p.SchedulerId = scheduleId;
+                if (string.IsNullOrEmpty(scheduleName) == false)
+                    p.SchedulerName = scheduleName;
+
+                p.SetProperty("quartz.serializer.type", "json");
+                p.SetProperty("quartz.jobStore.type", "Quartz.Simpl.RAMJobStore, Quartz");
+                p.SetProperty("quartz.jobStore.useProperties", "true");
+                p.SetProperty("quartz.plugin.timezoneConverter.type",
+                   "Quartz.Plugin.TimeZoneConverter.TimeZoneConverterPlugin, Quartz.Plugins.TimeZoneConverter");
             };
         }
     }
