@@ -26,6 +26,7 @@ namespace NET.QuartzScheduler.Services.models
         public string Description { get; set; }
         public DateTime? StartTime { get; set; }
         public int Priority { get; set; }
+        public Dictionary<string, string> JobData { get; set; }
     }
     public class TriggerJobModel
     {
@@ -38,6 +39,6 @@ namespace NET.QuartzScheduler.Services.models
         public string JobName { get; set; }
         public string JobGroup { get; set; }
         public int? Status { get; set; }
-        public Dictionary<string,string> JobParams { get; set; }
+       
     }
 }
