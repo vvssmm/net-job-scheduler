@@ -9,8 +9,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-var connectionString = builder.Configuration.GetConnectionString("Sql");
-builder.Services.AddDbContext<QuartzDbContext>(option=>option.UseSqlServer(connectionString));
+builder.Services.DALServiceInjection(builder.Configuration);
 
 var app = builder.Build();
 

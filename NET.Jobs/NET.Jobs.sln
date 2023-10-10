@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET.QuartzScheduler.DAL", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET.QuartzScheduler.DTO", "NET.QuartzScheduler.DataTransfer\NET.QuartzScheduler.DTO.csproj", "{22B7DEA9-000E-4E18-BC7B-EC13E235E626}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET.QuartzSheduler.Bus", "NET.QuartzSheduler.Bus\NET.QuartzSheduler.Bus.csproj", "{C8052446-9C64-4013-AB0A-0C67DFF834EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET.QuartzScheduler.Bus", "NET.QuartzSheduler.Bus\NET.QuartzScheduler.Bus.csproj", "{C8052446-9C64-4013-AB0A-0C67DFF834EA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET.QuartzScheduler.Services", "NET.QuartzScheduler.Services\NET.QuartzScheduler.Services.csproj", "{5B824B02-29F3-4EDA-8AAB-BEA3938CF766}"
 EndProject
