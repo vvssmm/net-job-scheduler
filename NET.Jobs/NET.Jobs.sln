@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET.QuartzScheduler.Services", "NET.QuartzScheduler\NET.QuartzScheduler.Services.csproj", "{3DBAA719-329A-49AE-A1EA-E50B3170C849}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{061C9044-2DBD-4AEC-A04A-4179994D2E72}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CoreServices", "CoreServices", "{67B9DABE-E736-4C56-BAB4-EE8451956F90}"
@@ -17,11 +15,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET.QuartzScheduler.Client"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET.QuartzScheduler.Server", "NET.QuartzScheduler.Server\NET.QuartzScheduler.Server.csproj", "{E03F30AB-E2A0-43B2-A0DB-75C097E9C4F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET.QuartzScheduler.DataAccess", "NET.QuartzScheduler.DataAccess\NET.QuartzScheduler.DataAccess.csproj", "{CB978131-40D4-420A-B2D4-993EE7066136}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET.QuartzScheduler.DAL", "NET.QuartzScheduler.DataAccess\NET.QuartzScheduler.DAL.csproj", "{CB978131-40D4-420A-B2D4-993EE7066136}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET.QuartzScheduler.DataTransfer", "NET.QuartzScheduler.DataTransfer\NET.QuartzScheduler.DataTransfer.csproj", "{22B7DEA9-000E-4E18-BC7B-EC13E235E626}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET.QuartzScheduler.DTO", "NET.QuartzScheduler.DataTransfer\NET.QuartzScheduler.DTO.csproj", "{22B7DEA9-000E-4E18-BC7B-EC13E235E626}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET.QuartzSheduler.Bus", "NET.QuartzSheduler.Bus\NET.QuartzSheduler.Bus.csproj", "{C8052446-9C64-4013-AB0A-0C67DFF834EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET.QuartzSheduler.Bus", "NET.QuartzSheduler.Bus\NET.QuartzSheduler.Bus.csproj", "{C8052446-9C64-4013-AB0A-0C67DFF834EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET.QuartzScheduler.Services", "NET.QuartzScheduler.Services\NET.QuartzScheduler.Services.csproj", "{5B824B02-29F3-4EDA-8AAB-BEA3938CF766}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET.QuartzScheduler.Migrator", "NET.QuartzScheduler.Migrator\NET.QuartzScheduler.Migrator.csproj", "{E5B17814-413C-45EB-9EB4-0AF054A9A385}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +31,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3DBAA719-329A-49AE-A1EA-E50B3170C849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3DBAA719-329A-49AE-A1EA-E50B3170C849}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3DBAA719-329A-49AE-A1EA-E50B3170C849}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3DBAA719-329A-49AE-A1EA-E50B3170C849}.Release|Any CPU.Build.0 = Release|Any CPU
 		{607F4BBD-6E86-45FA-98A9-6CE58D39D2E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{607F4BBD-6E86-45FA-98A9-6CE58D39D2E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{607F4BBD-6E86-45FA-98A9-6CE58D39D2E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,12 +55,19 @@ Global
 		{C8052446-9C64-4013-AB0A-0C67DFF834EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8052446-9C64-4013-AB0A-0C67DFF834EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8052446-9C64-4013-AB0A-0C67DFF834EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B824B02-29F3-4EDA-8AAB-BEA3938CF766}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B824B02-29F3-4EDA-8AAB-BEA3938CF766}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B824B02-29F3-4EDA-8AAB-BEA3938CF766}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B824B02-29F3-4EDA-8AAB-BEA3938CF766}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5B17814-413C-45EB-9EB4-0AF054A9A385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5B17814-413C-45EB-9EB4-0AF054A9A385}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5B17814-413C-45EB-9EB4-0AF054A9A385}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5B17814-413C-45EB-9EB4-0AF054A9A385}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3DBAA719-329A-49AE-A1EA-E50B3170C849} = {67B9DABE-E736-4C56-BAB4-EE8451956F90}
 		{607F4BBD-6E86-45FA-98A9-6CE58D39D2E8} = {67B9DABE-E736-4C56-BAB4-EE8451956F90}
 		{944BFD1A-B3F1-4069-B094-AF197245E713} = {061C9044-2DBD-4AEC-A04A-4179994D2E72}
 		{2E201CF3-EEF9-4E91-9D96-0F5A0655FC5F} = {944BFD1A-B3F1-4069-B094-AF197245E713}
@@ -70,6 +75,8 @@ Global
 		{CB978131-40D4-420A-B2D4-993EE7066136} = {944BFD1A-B3F1-4069-B094-AF197245E713}
 		{22B7DEA9-000E-4E18-BC7B-EC13E235E626} = {944BFD1A-B3F1-4069-B094-AF197245E713}
 		{C8052446-9C64-4013-AB0A-0C67DFF834EA} = {944BFD1A-B3F1-4069-B094-AF197245E713}
+		{5B824B02-29F3-4EDA-8AAB-BEA3938CF766} = {67B9DABE-E736-4C56-BAB4-EE8451956F90}
+		{E5B17814-413C-45EB-9EB4-0AF054A9A385} = {944BFD1A-B3F1-4069-B094-AF197245E713}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {929034E0-514A-4983-ACA0-12BBFC4F742A}

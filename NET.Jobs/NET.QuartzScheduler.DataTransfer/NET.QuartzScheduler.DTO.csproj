@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="QuartzDtos\**" />
+    <Compile Remove="QuartzEntities\**" />
+    <EmbeddedResource Remove="QuartzDtos\**" />
+    <EmbeddedResource Remove="QuartzEntities\**" />
+    <None Remove="QuartzDtos\**" />
+    <None Remove="QuartzEntities\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dtos\" />
+  </ItemGroup>
+
+</Project>
